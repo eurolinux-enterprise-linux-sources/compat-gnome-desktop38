@@ -1,0 +1,113 @@
+<!-- ##### SECTION Title ##### -->
+GnomeIdleMonitor
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT GnomeIdleMonitor ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ARG GnomeIdleMonitor:device ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT GnomeIdleMonitorClass ##### -->
+<para>
+
+</para>
+
+@parent_class: 
+
+<!-- ##### USER_FUNCTION GnomeIdleMonitorWatchFunc ##### -->
+<para>
+
+</para>
+
+@monitor: 
+@id: 
+@user_data: 
+
+
+<!-- ##### FUNCTION gnome_idle_monitor_new ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_idle_monitor_new_for_device ##### -->
+<para>
+
+</para>
+
+@device: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_idle_monitor_add_idle_watch ##### -->
+<para>
+
+</para>
+
+@monitor: 
+@interval_msec: 
+@callback: 
+@user_data: 
+@notify: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_idle_monitor_add_user_active_watch ##### -->
+<para>
+
+</para>
+
+@monitor: 
+@callback: 
+@user_data: 
+@notify: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_idle_monitor_remove_watch ##### -->
+<para>
+
+</para>
+
+@monitor: 
+@id: 
+
+
+<!-- ##### FUNCTION gnome_idle_monitor_get_idletime ##### -->
+<para>
+
+</para>
+
+@monitor: 
+@Returns: 
+
+

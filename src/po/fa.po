@@ -1,0 +1,269 @@
+# Persian translation of gnome-desktop.
+# Copyright (C) 1998-2010 Free Software Foundation, Inc.
+# This file is distributed under the same license as the gnome-desktop package.
+# Roozbeh Pournader <roozbeh@farsiweb.info>, 2003.
+# Meelad Zakaria <meelad@farsiweb.info>, 2004.
+# Elnaz Sarbar <elnaz@farsiweb.info>, 2006.
+# Farzaneh Sarafraz <farzaneh@farsiweb.info>, 2006.
+# Mahyar Moghimi <mahyar.moqimi@gmail.com>, 2010.
+# Arash Mousavi <mousavi.arash@gmail.cim>, 2012, 2013.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: gnome-desktop HEAD\n"
+"Report-Msgid-Bugs-To: http://bugzilla.gnome.org/enter_bug.cgi?product=gnome-"
+"desktop&keywords=I18N+L10N&component=general\n"
+"POT-Creation-Date: 2013-03-04 10:03+0000\n"
+"PO-Revision-Date: 2013-03-22 17:55+0330\n"
+"Last-Translator: Arash Mousavi <mousavi.arash@gmail.com>\n"
+"Language-Team: Persian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. Translators: "Unknown" here is used to identify a monitor for which
+#. * we don't know the vendor. When a vendor is known, the name of the
+#. * vendor is used.
+#: ../libgnome-desktop/display-name.c:107
+msgctxt "Monitor vendor"
+msgid "Unknown"
+msgstr "ناشناخته"
+
+#: ../libgnome-desktop/gnome-languages.c:804
+msgid "Unspecified"
+msgstr "نامشخص"
+
+#. Translators: a CRTC is a CRT Controller (this is X terminology).
+#: ../libgnome-desktop/gnome-rr.c:452
+#, c-format
+msgid "could not get the screen resources (CRTCs, outputs, modes)"
+msgstr "منابع صفحه نمایش گرفته نشد(کنترل کننده‌ی سی‌آر‌تی، خروجی‌ها، حالت‌ها)"
+
+#: ../libgnome-desktop/gnome-rr.c:472
+#, c-format
+msgid "unhandled X error while getting the range of screen sizes"
+msgstr "خطای تصدی نشدهٔ ایکس هنگام گرفتن گسترهٔ اندازه‌ی صفحه‌نمایش"
+
+#: ../libgnome-desktop/gnome-rr.c:478
+#, c-format
+msgid "could not get the range of screen sizes"
+msgstr "گسترهٔ اندازه‌های صفحه نمایش گرفته نشد."
+
+#: ../libgnome-desktop/gnome-rr.c:769
+#, c-format
+msgid "RANDR extension is not present"
+msgstr "پسوند RANDR موجود نیست."
+
+#: ../libgnome-desktop/gnome-rr.c:1580
+#, c-format
+msgid "could not get information about output %d"
+msgstr "اطلاعات درباره‌ی خروجی %d بدست نیامد."
+
+#: ../libgnome-desktop/gnome-rr.c:1764
+msgid "Built-in Display"
+msgstr "نمایشگر توکار"
+
+#. Translators: %s is the size of the monitor in inches
+#: ../libgnome-desktop/gnome-rr.c:1782
+#, c-format
+msgid "%s Display"
+msgstr "نمایشگر %s"
+
+#: ../libgnome-desktop/gnome-rr.c:1789
+#| msgctxt "Monitor vendor"
+#| msgid "Unknown"
+msgid "Unknown Display"
+msgstr "نمایشگر ناشناس"
+
+#. Translators: the "position", "size", and "maximum"
+#. * words here are not keywords; please translate them
+#. * as usual.  A CRTC is a CRT Controller (this is X terminology)
+#: ../libgnome-desktop/gnome-rr.c:2234
+#, c-format
+msgid ""
+"requested position/size for CRTC %d is outside the allowed limit: "
+"position=(%d, %d), size=(%d, %d), maximum=(%d, %d)"
+msgstr ""
+"موقعیت/اندازه‌ی درخواست شده برای کنترل‌کننده‌ی سی‌آر‌تی %d در خارج از حد مجاز "
+"است: موقعیت=(%d, %d) ، , اندازه=(%d, %d), بیشینه=(%d, %d)"
+
+#: ../libgnome-desktop/gnome-rr.c:2270
+#, c-format
+msgid "could not set the configuration for CRTC %d"
+msgstr "پیکر‌بندی برای کنترلر سی‌آر‌تی %d تنظیم نشد"
+
+#: ../libgnome-desktop/gnome-rr.c:2421
+#, c-format
+msgid "could not get information about CRTC %d"
+msgstr "اطلاعات درباره‌ی کنترلر سی‌آر‌تی %d گرفته نشد"
+
+#: ../libgnome-desktop/gnome-rr-config.c:708
+#, c-format
+msgid ""
+"none of the saved display configurations matched the active configuration"
+msgstr ""
+"هیچ‌کدام از پیکربندی‌های ذخیره شده برای صفحهٔ نمایش با پیکربندی فعال فعلی "
+"مطابقت نیافت."
+
+#: ../libgnome-desktop/gnome-rr-config.c:1464
+#, c-format
+msgid "CRTC %d cannot drive output %s"
+msgstr "کنترلر سی‌آر‌تی %d نمی‌تواند خروجی %s را بگرداند"
+
+#: ../libgnome-desktop/gnome-rr-config.c:1471
+#, c-format
+msgid "output %s does not support mode %dx%d@%dHz"
+msgstr "خروجی %s از حالت %dx%d@%dHz پشتیبانی نمی‌کند."
+
+#: ../libgnome-desktop/gnome-rr-config.c:1482
+#, c-format
+msgid "CRTC %d does not support rotation=%s"
+msgstr "کنترلر سی‌آر‌تی %d از چرخاندن=%s پشتیبانی نمی‌کند"
+
+#: ../libgnome-desktop/gnome-rr-config.c:1496
+#, c-format
+msgid ""
+"output %s does not have the same parameters as another cloned output:\n"
+"existing mode = %d, new mode = %d\n"
+"existing coordinates = (%d, %d), new coordinates = (%d, %d)\n"
+"existing rotation = %s, new rotation = %s"
+msgstr ""
+"خروجی %s دارای پارامتر‌های همانند با خروجی دیگری (که کپی‌برابر است) نیست: \n"
+"حالت موجود = %d ، حالت جدید= %d\n"
+"مختصات موجود = (%d, %d), مختصات جدید = (%d, %d)\n"
+"چرخش موجود =  %s, چرخش جدید = %s"
+
+#: ../libgnome-desktop/gnome-rr-config.c:1511
+#, c-format
+msgid "cannot clone to output %s"
+msgstr "کپی‌برابر به خروجی %s انجام نمی‌شود."
+
+#: ../libgnome-desktop/gnome-rr-config.c:1680
+#, c-format
+msgid "Trying modes for CRTC %d\n"
+msgstr "در حال آزمودن حالت‌ها برای کنترلر سی‌آر‌تی %d  \n"
+
+#: ../libgnome-desktop/gnome-rr-config.c:1704
+#, c-format
+msgid "CRTC %d: trying mode %dx%d@%dHz with output at %dx%d@%dHz (pass %d)\n"
+msgstr ""
+"کنترلر سی‌آر‌تی %d: در حال امتحان کردن حالت %dx%d@%dHz با خروجی در %dx%d@%dHz "
+"(گذر %d )\n"
+
+#: ../libgnome-desktop/gnome-rr-config.c:1751
+#, c-format
+msgid ""
+"could not assign CRTCs to outputs:\n"
+"%s"
+msgstr ""
+"کنترلرهای سی‌آر‌تی به خروجی‌ها منتسب نشد:\n"
+"%s"
+
+#: ../libgnome-desktop/gnome-rr-config.c:1755
+#, c-format
+msgid ""
+"none of the selected modes were compatible with the possible modes:\n"
+"%s"
+msgstr ""
+"هیچ‌کدام از حالت‌های انتخاب شده با حالت‌های ممکن، سازگار نبودند: \n"
+"%s"
+
+#. Translators: the "requested", "minimum", and
+#. * "maximum" words here are not keywords; please
+#. * translate them as usual.
+#: ../libgnome-desktop/gnome-rr-config.c:1833
+#, c-format
+msgid ""
+"required virtual size does not fit available size: requested=(%d, %d), "
+"minimum=(%d, %d), maximum=(%d, %d)"
+msgstr ""
+"اندازه‌ی مجازی مورد نیاز با اندازه‌ی در دسترس جور نمی‌شود: درخواست شده= (%d, "
+"%d) ، کمینه= (%d, %d)، بیشینه= (%d, %d)"
+
+#. Translators: This is the time format with full date used
+#. in 24-hour mode.
+#. The character between %R and %S is U+2236 RATIO
+#: ../libgnome-desktop/gnome-wall-clock.c:268
+#| msgid "%a %b %e, %R:%S"
+msgid "%a %b %e, %R∶%S"
+msgstr "%a %Oe %b %OH:%OM:%OS"
+
+#: ../libgnome-desktop/gnome-wall-clock.c:269
+msgid "%a %b %e, %R"
+msgstr "%a %Od %b %OH:%OM"
+
+#. Translators: This is the time format with day used
+#. in 24-hour mode.
+#. The character between %R and %S is U+2236 RATIO
+#: ../libgnome-desktop/gnome-wall-clock.c:274
+#| msgid "%a %R:%S"
+msgid "%a %R∶%S"
+msgstr "%a %OH:%OM:%OS"
+
+#: ../libgnome-desktop/gnome-wall-clock.c:275
+msgid "%a %R"
+msgstr "%a %OH:%OM"
+
+#. Translators: This is the time format without date used
+#. in 24-hour mode.
+#. The character between %R and %S is U+2236 RATIO
+#: ../libgnome-desktop/gnome-wall-clock.c:280
+msgid "%R∶%S"
+msgstr "%OH:%OM:%OS"
+
+#: ../libgnome-desktop/gnome-wall-clock.c:280
+msgid "%R"
+msgstr "%OH:%OM"
+
+#. Translators: This is a time format with full date used
+#. for AM/PM.
+#. The Unicode characters are U+2236 RATIO and
+#. U+2009 THIN SPACE
+#: ../libgnome-desktop/gnome-wall-clock.c:288
+#| msgid "%a %b %e, %l:%M:%S %p"
+msgid "%a %b %e, %l∶%M∶%S %p"
+msgstr "%a Oe% %b، %OI:%OM:%OS %p"
+
+#: ../libgnome-desktop/gnome-wall-clock.c:289
+#| msgid "%a %b %e, %l:%M %p"
+msgid "%a %b %e, %l∶%M %p"
+msgstr "%a %Oe %b، %OI:%OM %p"
+
+#. Translators: This is a time format with day used
+#. for AM/PM.
+#. The Unicode characters are U+2236 RATIO and
+#. U+2009 THIN SPACE
+#: ../libgnome-desktop/gnome-wall-clock.c:295
+#| msgid "%a %l:%M:%S %p"
+msgid "%a %l∶%M∶%S %p"
+msgstr "%a %OI:%OM:%OS %p"
+
+#: ../libgnome-desktop/gnome-wall-clock.c:296
+#| msgid "%a %l:%M %p"
+msgid "%a %l∶%M %p"
+msgstr "%a %OI:%OM %p"
+
+#. Translators: This is a time format without date used
+#. for AM/PM.
+#. The Unicode characters are U+2236 RATIO and
+#. U+2009 THIN SPACE
+#: ../libgnome-desktop/gnome-wall-clock.c:302
+msgid "%l∶%M∶%S %p"
+msgstr "%Ol∶%OM∶%OS %p"
+
+#: ../libgnome-desktop/gnome-wall-clock.c:303
+msgid "%l∶%M %p"
+msgstr "%Ol∶%OM %p"
+
+#~ msgid "Cannot find a terminal, using xterm, even if it may not work"
+#~ msgstr ""
+#~ "پایانه‌ای یافت نمی‌شود، با استفاده از مقلد پایانه در سیستم پنجرهٔ ایکس، حتی "
+#~ "اگر ممکن است کار نکند"
+
+#~ msgid "Laptop"
+#~ msgstr "لپ‌تاپ"
+
+#~ msgid "Mirrored Displays"
+#~ msgstr "نمایشگرهای آینه‌ای"

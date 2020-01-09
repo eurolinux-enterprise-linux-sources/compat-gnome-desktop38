@@ -1,0 +1,115 @@
+<!-- ##### SECTION Title ##### -->
+Language Utilities
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### FUNCTION gnome_get_all_locales ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_get_country_from_code ##### -->
+<para>
+
+</para>
+
+@code: 
+@translation: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_get_country_from_locale ##### -->
+<para>
+
+</para>
+
+@locale: 
+@translation: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_get_input_source_from_locale ##### -->
+<para>
+
+</para>
+
+@locale: 
+@type: 
+@id: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_get_language_from_code ##### -->
+<para>
+
+</para>
+
+@code: 
+@translation: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_get_language_from_locale ##### -->
+<para>
+
+</para>
+
+@locale: 
+@translation: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_normalize_locale ##### -->
+<para>
+
+</para>
+
+@locale: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_parse_locale ##### -->
+<para>
+
+</para>
+
+@locale: 
+@language_codep: 
+@country_codep: 
+@codesetp: 
+@modifierp: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_language_has_translations ##### -->
+<para>
+
+</para>
+
+@code: 
+@Returns: 
+
+

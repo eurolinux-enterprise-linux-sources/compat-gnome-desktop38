@@ -1,0 +1,63 @@
+<!-- ##### SECTION Title ##### -->
+gnome-pnp-ids
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT GnomePnpIds ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT GnomePnpIdsClass ##### -->
+<para>
+
+</para>
+
+@parent_class: 
+
+<!-- ##### MACRO GNOME_PNP_IDS_ERROR ##### -->
+<para>
+
+</para>
+
+
+
+<!-- ##### FUNCTION gnome_pnp_ids_get_pnp_id ##### -->
+<para>
+
+</para>
+
+@pnp_ids: 
+@pnp_id: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_pnp_ids_new ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+

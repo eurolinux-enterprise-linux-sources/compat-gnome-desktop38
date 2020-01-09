@@ -1,0 +1,380 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Language Utilities</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GNOME Desktop Library Reference Manual">
+<link rel="up" href="languages.html" title="Part VIII. Language Utilities">
+<link rel="prev" href="languages.html" title="Part VIII. Language Utilities">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="languages.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="languages.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GNOME Desktop Library Reference Manual</th>
+<td> </td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#gnome-desktop3-Language-Utilities.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#gnome-desktop3-Language-Utilities.description" class="shortcut">Description</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="gnome-desktop3-Language-Utilities"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gnome-desktop3-Language-Utilities.top_of_page"></a>Language Utilities</span></h2>
+<p>Language Utilities</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="gnome-desktop3-Language-Utilities.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis"><span class="returnvalue">char</span> **             <a class="link" href="gnome-desktop3-Language-Utilities.html#gnome-get-all-locales" title="gnome_get_all_locales ()">gnome_get_all_locales</a>               (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">char</span> *              <a class="link" href="gnome-desktop3-Language-Utilities.html#gnome-get-country-from-code" title="gnome_get_country_from_code ()">gnome_get_country_from_code</a>         (<em class="parameter"><code>const <span class="type">char</span> *code</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *translation</code></em>);
+<span class="returnvalue">char</span> *              <a class="link" href="gnome-desktop3-Language-Utilities.html#gnome-get-country-from-locale" title="gnome_get_country_from_locale ()">gnome_get_country_from_locale</a>       (<em class="parameter"><code>const <span class="type">char</span> *locale</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *translation</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="gnome-desktop3-Language-Utilities.html#gnome-get-input-source-from-locale" title="gnome_get_input_source_from_locale ()">gnome_get_input_source_from_locale</a>  (<em class="parameter"><code>const <span class="type">char</span> *locale</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> **type</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> **id</code></em>);
+<span class="returnvalue">char</span> *              <a class="link" href="gnome-desktop3-Language-Utilities.html#gnome-get-language-from-code" title="gnome_get_language_from_code ()">gnome_get_language_from_code</a>        (<em class="parameter"><code>const <span class="type">char</span> *code</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *translation</code></em>);
+<span class="returnvalue">char</span> *              <a class="link" href="gnome-desktop3-Language-Utilities.html#gnome-get-language-from-locale" title="gnome_get_language_from_locale ()">gnome_get_language_from_locale</a>      (<em class="parameter"><code>const <span class="type">char</span> *locale</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *translation</code></em>);
+<span class="returnvalue">char</span> *              <a class="link" href="gnome-desktop3-Language-Utilities.html#gnome-normalize-locale" title="gnome_normalize_locale ()">gnome_normalize_locale</a>              (<em class="parameter"><code>const <span class="type">char</span> *locale</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="gnome-desktop3-Language-Utilities.html#gnome-parse-locale" title="gnome_parse_locale ()">gnome_parse_locale</a>                  (<em class="parameter"><code>const <span class="type">char</span> *locale</code></em>,
+                                                         <em class="parameter"><code><span class="type">char</span> **language_codep</code></em>,
+                                                         <em class="parameter"><code><span class="type">char</span> **country_codep</code></em>,
+                                                         <em class="parameter"><code><span class="type">char</span> **codesetp</code></em>,
+                                                         <em class="parameter"><code><span class="type">char</span> **modifierp</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="gnome-desktop3-Language-Utilities.html#gnome-language-has-translations" title="gnome_language_has_translations ()">gnome_language_has_translations</a>     (<em class="parameter"><code>const <span class="type">char</span> *code</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="gnome-desktop3-Language-Utilities.description"></a><h2>Description</h2>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="gnome-desktop3-Language-Utilities.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="gnome-get-all-locales"></a><h3>gnome_get_all_locales ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> **             gnome_get_all_locales               (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Gets all locales.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a newly allocated <a href="/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>-terminated string array containing the
+all locales. Free with <code class="function">g_strfreev()</code>. <span class="annotation">[<a href="http://foldoc.org/array"><span class="acronym">array</span></a> zero-terminated=1][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> utf8][<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 3.8</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-get-country-from-code"></a><h3>gnome_get_country_from_code ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *              gnome_get_country_from_code         (<em class="parameter"><code>const <span class="type">char</span> *code</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *translation</code></em>);</pre>
+<p>
+Gets the country name for <em class="parameter"><code>code</code></em>. If <em class="parameter"><code>locale</code></em> is provided the
+returned string is translated accordingly.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>code</code></em> :</span></p></td>
+<td>an ISO 3166 code string</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>translation</code></em> :</span></p></td>
+<td>a locale string. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the country name. Caller takes
+ownership. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.8</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-get-country-from-locale"></a><h3>gnome_get_country_from_locale ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *              gnome_get_country_from_locale       (<em class="parameter"><code>const <span class="type">char</span> *locale</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *translation</code></em>);</pre>
+<p>
+Gets the country description for <em class="parameter"><code>locale</code></em>. If <em class="parameter"><code>translation</code></em> is
+provided the returned string is translated accordingly.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>locale</code></em> :</span></p></td>
+<td>a locale string</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>translation</code></em> :</span></p></td>
+<td>a locale string. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the country description. Caller
+takes ownership. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.8</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-get-input-source-from-locale"></a><h3>gnome_get_input_source_from_locale ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            gnome_get_input_source_from_locale  (<em class="parameter"><code>const <span class="type">char</span> *locale</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> **type</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> **id</code></em>);</pre>
+<p>
+Gets the default input source's type and identifier for a given
+locale.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>locale</code></em> :</span></p></td>
+<td>a locale string</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>type</code></em> :</span></p></td>
+<td>location to store the input source
+type. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>id</code></em> :</span></p></td>
+<td>location to store the input source
+identifier. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if a input source exists or <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.8</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-get-language-from-code"></a><h3>gnome_get_language_from_code ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *              gnome_get_language_from_code        (<em class="parameter"><code>const <span class="type">char</span> *code</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *translation</code></em>);</pre>
+<p>
+Gets the language name for <em class="parameter"><code>code</code></em>. If <em class="parameter"><code>locale</code></em> is provided the
+returned string is translated accordingly.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>code</code></em> :</span></p></td>
+<td>an ISO 639 code string</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>translation</code></em> :</span></p></td>
+<td>a locale string. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the language name. Caller takes
+ownership. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.8</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-get-language-from-locale"></a><h3>gnome_get_language_from_locale ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *              gnome_get_language_from_locale      (<em class="parameter"><code>const <span class="type">char</span> *locale</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">char</span> *translation</code></em>);</pre>
+<p>
+Gets the language description for <em class="parameter"><code>locale</code></em>. If <em class="parameter"><code>translation</code></em> is
+provided the returned string is translated accordingly.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>locale</code></em> :</span></p></td>
+<td>a locale string</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>translation</code></em> :</span></p></td>
+<td>a locale string. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the language description. Caller
+takes ownership. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.8</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-normalize-locale"></a><h3>gnome_normalize_locale ()</h3>
+<pre class="programlisting"><span class="returnvalue">char</span> *              gnome_normalize_locale              (<em class="parameter"><code>const <span class="type">char</span> *locale</code></em>);</pre>
+<p>
+Gets the normalized locale string in the form
+[language[_country][.codeset][<em class="parameter"><code>modifier</code></em>]] for <em class="parameter"><code>name</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>locale</code></em> :</span></p></td>
+<td>a locale string</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>normalized locale string. Caller
+takes ownership. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.8</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-parse-locale"></a><h3>gnome_parse_locale ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            gnome_parse_locale                  (<em class="parameter"><code>const <span class="type">char</span> *locale</code></em>,
+                                                         <em class="parameter"><code><span class="type">char</span> **language_codep</code></em>,
+                                                         <em class="parameter"><code><span class="type">char</span> **country_codep</code></em>,
+                                                         <em class="parameter"><code><span class="type">char</span> **codesetp</code></em>,
+                                                         <em class="parameter"><code><span class="type">char</span> **modifierp</code></em>);</pre>
+<p>
+Extracts the various components of a locale string of the form
+[language[_country][.codeset][<em class="parameter"><code>modifier</code></em>]]. See
+http://en.wikipedia.org/wiki/Locale.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>locale</code></em> :</span></p></td>
+<td>a locale string</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>language_codep</code></em> :</span></p></td>
+<td>location to
+store the language code, or <a href="/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>][<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>country_codep</code></em> :</span></p></td>
+<td>location to
+store the country code, or <a href="/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>][<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>codesetp</code></em> :</span></p></td>
+<td>location to
+store the codeset, or <a href="/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>][<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>modifierp</code></em> :</span></p></td>
+<td>location to
+store the modifier, or <a href="/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>][<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if parsing was successful.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.8</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-language-has-translations"></a><h3>gnome_language_has_translations ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            gnome_language_has_translations     (<em class="parameter"><code>const <span class="type">char</span> *code</code></em>);</pre>
+<p>
+Returns <code class="literal">TRUE</code> if there are translations for language <em class="parameter"><code>code</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>code</code></em> :</span></p></td>
+<td>an ISO 639 code string</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if there are translations for language <em class="parameter"><code>code</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.8</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

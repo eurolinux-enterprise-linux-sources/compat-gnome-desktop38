@@ -1,0 +1,757 @@
+From f7e7d11a38437305ee31c195d8e910f2230a21b4 Mon Sep 17 00:00:00 2001
+From: Stefan Sperling <stsp@openbsd.org>
+Date: Wed, 28 Aug 2013 18:25:34 +0200
+Subject: [PATCH 1/4] Obtain supported locales from "locale -a" output.
+
+Instead of parsing the locale archive file which is private to glibc
+(see https://bugzilla.redhat.com/show_bug.cgi?id=956993), run the
+"locale -a" command to obtain the list of supported locales.
+
+"locale -a" is specified in POSIX and should thus exist on most UNIX-like
+systems (e.g. on OpenBSD, which triggered the related bugzilla entry
+because GNOME was unable to find a list of supported locales).
+
+Keep scanning the /usr/share/locale directory as a fallback.
+
+Remove code wrapped in #ifdef WITH_INCOMPLETE_LOCALES. This code was
+inherited from gdm but is now unused.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=698383
+---
+ libgnome-desktop/gnome-languages.c | 150 +++++++++----------------------------
+ 1 file changed, 35 insertions(+), 115 deletions(-)
+
+diff --git a/libgnome-desktop/gnome-languages.c b/libgnome-desktop/gnome-languages.c
+index 18e3705..667eb81 100644
+--- a/libgnome-desktop/gnome-languages.c
++++ b/libgnome-desktop/gnome-languages.c
+@@ -17,64 +17,61 @@
+  * along with this program; if not, write to the Free Software
+  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+  *
+  * Written by : William Jon McCann <mccann@jhu.edu>
+  *              Ray Strode <rstrode@redhat.com>
+  */
+ 
+ #include "config.h"
+ 
+ #include <stdlib.h>
+ #include <stdio.h>
+ #include <unistd.h>
+ #include <string.h>
+ #include <errno.h>
+ #include <dirent.h>
+ #include <locale.h>
+ #include <langinfo.h>
+ #include <sys/stat.h>
+ 
+ #include <glib.h>
+ #include <glib/gi18n.h>
+ #include <glib/gstdio.h>
+ 
+ #define GNOME_DESKTOP_USE_UNSTABLE_API
+ #include "gnome-languages.h"
+ 
+ #include <langinfo.h>
+ #ifndef __LC_LAST
+ #define __LC_LAST       13
+ #endif
+-#include "locarchive.h"
+ 
+-#define ARCHIVE_FILE LIBLOCALEDIR "/locale-archive"
+-#define SYSTEM_ARCHIVE_FILE "/usr/lib/locale/locale-archive"
+ #define ISO_CODES_DATADIR ISO_CODES_PREFIX "/share/xml/iso-codes"
+ #define ISO_CODES_LOCALESDIR ISO_CODES_PREFIX "/share/locale"
+ 
+ #include "default-input-sources.h"
+ 
+ typedef struct _GnomeLocale {
+         char *id;
+         char *name;
+         char *language_code;
+         char *territory_code;
+         char *codeset;
+         char *modifier;
+ } GnomeLocale;
+ 
+ static GHashTable *gnome_languages_map;
+ static GHashTable *gnome_territories_map;
+ static GHashTable *gnome_available_locales_map;
+ static GHashTable *gnome_language_count_map;
+ static GHashTable *gnome_territory_count_map;
+ 
+ static char * construct_language_name (const char *language,
+                                        const char *territory,
+                                        const char *codeset,
+                                        const char *modifier);
+ 
+ static gboolean language_name_is_valid (const char *language_name);
+ 
+ static void
+ gnome_locale_free (GnomeLocale *locale)
+ {
+@@ -283,65 +280,61 @@ gnome_normalize_locale (const char *locale)
+         char *modifier;
+         gboolean valid;
+ 
+         if (locale[0] == '\0') {
+                 return NULL;
+         }
+ 
+         valid = gnome_parse_locale (locale,
+                                     &language_code,
+                                     &territory_code,
+                                     &codeset, &modifier);
+         if (!valid)
+                 return NULL;
+ 
+         normalized_name = construct_language_name (language_code,
+                                                    territory_code,
+                                                    codeset, modifier);
+         g_free (language_code);
+         g_free (territory_code);
+         g_free (codeset);
+         g_free (modifier);
+ 
+         return normalized_name;
+ }
+ 
+ static gboolean
+ language_name_is_valid (const char *language_name)
+ {
+         char     *old_locale;
+         gboolean  is_valid;
+-#ifdef WITH_INCOMPLETE_LOCALES
+-        int lc_type_id = LC_CTYPE;
+-#else
+         int lc_type_id = LC_MESSAGES;
+-#endif
+ 
+         old_locale = g_strdup (setlocale (lc_type_id, NULL));
+         is_valid = setlocale (lc_type_id, language_name) != NULL;
+         setlocale (lc_type_id, old_locale);
+         g_free (old_locale);
+ 
+         return is_valid;
+ }
+ 
+ static void
+ language_name_get_codeset_details (const char  *language_name,
+                                    char       **pcodeset,
+                                    gboolean    *is_utf8)
+ {
+         char     *old_locale;
+         char     *codeset;
+ 
+         old_locale = g_strdup (setlocale (LC_CTYPE, NULL));
+ 
+         if (setlocale (LC_CTYPE, language_name) == NULL) {
+                 g_free (old_locale);
+                 return;
+         }
+ 
+         codeset = nl_langinfo (CODESET);
+ 
+         if (pcodeset != NULL) {
+                 *pcodeset = g_strdup (codeset);
+         }
+ 
+@@ -418,304 +411,231 @@ add_locale (const char *language_name,
+ 
+         if (is_utf8) {
+                 name = g_strdup (language_name);
+         } else if (utf8_only) {
+                 name = g_strdup_printf ("%s.utf8", language_name);
+ 
+                 language_name_get_codeset_details (name, NULL, &is_utf8);
+                 if (!is_utf8) {
+                         g_free (name);
+                         return FALSE;
+                 }
+         } else {
+                 name = g_strdup (language_name);
+         }
+ 
+         if (!language_name_is_valid (name)) {
+                 g_debug ("Ignoring '%s' as a locale, since it's invalid", name);
+                 g_free (name);
+                 return FALSE;
+         }
+ 
+         locale = g_new0 (GnomeLocale, 1);
+         gnome_parse_locale (name,
+                             &locale->language_code,
+                             &locale->territory_code,
+                             &locale->codeset,
+                             &locale->modifier);
+         g_free (name);
+         name = NULL;
+ 
+-#ifdef WITH_INCOMPLETE_LOCALES
+-        if (utf8_only) {
+-                if (locale->territory_code == NULL || locale->modifier) {
+-                        g_debug ("Ignoring '%s' as a locale, since it lacks territory code or modifier", name);
+-                        gnome_locale_free (locale);
+-                        return FALSE;
+-                }
+-        }
+-#endif
+-
+         locale->id = construct_language_name (locale->language_code, locale->territory_code,
+                                               NULL, locale->modifier);
+         locale->name = construct_language_name (locale->language_code, locale->territory_code,
+                                                 locale->codeset, locale->modifier);
+ 
+-#ifndef WITH_INCOMPLETE_LOCALES
+         if (!gnome_language_has_translations (locale->name) &&
+             !gnome_language_has_translations (locale->id) &&
+             !gnome_language_has_translations (locale->language_code) &&
+             utf8_only) {
+                 g_debug ("Ignoring '%s' as a locale, since it lacks translations", locale->name);
+                 gnome_locale_free (locale);
+                 return FALSE;
+         }
+-#endif
+ 
+         if (!utf8_only) {
+                 g_free (locale->id);
+                 locale->id = g_strdup (locale->name);
+         }
+ 
+         old_locale = g_hash_table_lookup (gnome_available_locales_map, locale->id);
+         if (old_locale != NULL) {
+                 if (strlen (old_locale->name) > strlen (locale->name)) {
+                         gnome_locale_free (locale);
+                         return FALSE;
+                 }
+         }
+ 
+         g_hash_table_insert (gnome_available_locales_map, g_strdup (locale->id), locale);
+ 
+         return TRUE;
+ }
+ 
+ struct nameent
+ {
+         char    *name;
+-        uint32_t locrec_offset;
++        guint32 locrec_offset;
+ };
+ 
+-static gboolean
+-mapped_file_new_allow_noent (const char   *path,
+-                             GMappedFile **out_mfile,
+-                             GError      **error)
+-{
+-        gboolean ret = FALSE;
+-        GError *tmp_error = NULL;
+-        GMappedFile *mfile = NULL;
+-
+-        mfile = g_mapped_file_new (path, FALSE, &tmp_error);
+-        if (mfile == NULL) {
+-                if (!g_error_matches (tmp_error, G_FILE_ERROR, G_FILE_ERROR_NOENT)) {
+-                        g_propagate_error (error, tmp_error);
+-                        goto out;
+-                }
+-                g_clear_error (&tmp_error);
+-        }
+-
+-        ret = TRUE;
+- out:
+-        *out_mfile = mfile;
+-        return ret;
+-}
+-
+-static gboolean
+-collect_locales_from_archive (gboolean  *out_found_locales,
+-                              GError   **error)
+-{
+-        gboolean            ret = FALSE;
+-        GMappedFile        *mapped;
+-        char               *addr;
+-        struct locarhead   *head;
+-        struct namehashent *namehashtab;
+-        struct nameent     *names = NULL;
+-        uint32_t            used;
+-        uint32_t            cnt;
+-        gsize               len;
+-        gboolean            locales_collected = FALSE;
+-
+-        if (!mapped_file_new_allow_noent (ARCHIVE_FILE, &mapped, error))
+-                goto out;
+-        if (!mapped) {
+-                if (!mapped_file_new_allow_noent (SYSTEM_ARCHIVE_FILE, &mapped, error))
+-                        goto out;
+-        }
+-        if (!mapped) {
+-                goto out_success;
+-        }
+-
+-        addr = g_mapped_file_get_contents (mapped);
+-        len = g_mapped_file_get_length (mapped);
+-
+-        head = (struct locarhead *) addr;
+-        if (head->namehash_offset + head->namehash_size > len
+-            || head->string_offset + head->string_size > len
+-            || head->locrectab_offset + head->locrectab_size > len
+-            || head->sumhash_offset + head->sumhash_size > len) {
+-                goto out;
+-        }
+-
+-        namehashtab = (struct namehashent *) (addr + head->namehash_offset);
+-
+-        names = (struct nameent *) g_new0 (struct nameent, head->namehash_used);
+-        for (cnt = used = 0; cnt < head->namehash_size; ++cnt) {
+-                if (namehashtab[cnt].locrec_offset != 0) {
+-                        names[used].name = addr + namehashtab[cnt].name_offset;
+-                        names[used++].locrec_offset = namehashtab[cnt].locrec_offset;
+-                }
+-        }
+-
+-        for (cnt = 0; cnt < used; ++cnt) {
+-                if (add_locale (names[cnt].name, TRUE))
+-                        locales_collected = TRUE;
+-        }
+-
+-
+- out_success:
+-        ret = TRUE;
+-        *out_found_locales = locales_collected;
+- out:
+-        g_free (names);
+-        g_clear_pointer (&mapped, g_mapped_file_unref);
+-        return ret;
+-}
+-
+ static int
+ select_dirs (const struct dirent *dirent)
+ {
+         int result = 0;
+ 
+         if (strcmp (dirent->d_name, ".") != 0 && strcmp (dirent->d_name, "..") != 0) {
+                 mode_t mode = 0;
+ 
+ #ifdef _DIRENT_HAVE_D_TYPE
+                 if (dirent->d_type != DT_UNKNOWN && dirent->d_type != DT_LNK) {
+                         mode = DTTOIF (dirent->d_type);
+                 } else
+ #endif
+                         {
+                                 struct stat st;
+                                 char       *path;
+ 
+                                 path = g_build_filename (LIBLOCALEDIR, dirent->d_name, NULL);
+                                 if (g_stat (path, &st) == 0) {
+                                         mode = st.st_mode;
+                                 }
+                                 g_free (path);
+                         }
+ 
+                 result = S_ISDIR (mode);
+         }
+ 
+         return result;
+ }
+ 
+ static gboolean
+ collect_locales_from_directory (void)
+ {
+         gboolean found_locales = FALSE;
+         struct dirent **dirents;
+         int             ndirents;
+         int             cnt;
+ 
+         ndirents = scandir (LIBLOCALEDIR, &dirents, select_dirs, alphasort);
+ 
+         for (cnt = 0; cnt < ndirents; ++cnt) {
+                 if (add_locale (dirents[cnt]->d_name, TRUE))
+                         found_locales = TRUE;
+         }
+ 
+         if (ndirents > 0) {
+                 free (dirents);
+         }
+         return found_locales;
+ }
+ 
++static gboolean
++collect_locales_from_localebin (void)
++{
++        gboolean found_locales = FALSE;
++        gchar    *argv[] = { "locale", "-a", NULL };
++        gchar    *output;
++        gchar    **lines, **linep;
++
++        if (g_spawn_sync (NULL, argv, NULL,
++                          G_SPAWN_SEARCH_PATH|G_SPAWN_STDERR_TO_DEV_NULL,
++                          NULL, NULL, &output, NULL, NULL, NULL) == FALSE)
++                return FALSE;
++
++        g_return_val_if_fail (output != NULL, FALSE);
++
++        lines = g_strsplit (output, "\n", 0);
++        if (lines) {
++                linep = lines;
++                while (*linep) {
++                        if (*linep[0] && add_locale (*linep, TRUE))
++                                found_locales = TRUE;
++                        linep++;
++                }
++                g_strfreev(lines);
++        }
++
++        g_free(output);
++
++        return found_locales;
++}
++
+ static void
+ count_languages_and_territories (void)
+ {
+ 	gpointer value;
+ 	GHashTableIter iter;
+ 
+ 	gnome_language_count_map = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+ 	gnome_territory_count_map = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+ 
+         g_hash_table_iter_init (&iter, gnome_available_locales_map);
+         while (g_hash_table_iter_next (&iter, NULL, &value)) {
+                 GnomeLocale *locale;
+ 
+                 locale = (GnomeLocale *) value;
+ 
+ 		if (locale->language_code != NULL) {
+ 			int count;
+ 
+ 			count = GPOINTER_TO_INT (g_hash_table_lookup (gnome_language_count_map, locale->language_code));
+ 			count++;
+ 			g_hash_table_insert (gnome_language_count_map, g_strdup (locale->language_code), GINT_TO_POINTER (count));
+ 		}
+ 
+ 		if (locale->territory_code != NULL) {
+ 			int count;
+ 
+ 			count = GPOINTER_TO_INT (g_hash_table_lookup (gnome_territory_count_map, locale->territory_code));
+ 			count++;
+ 			g_hash_table_insert (gnome_territory_count_map, g_strdup (locale->territory_code), GINT_TO_POINTER (count));
+ 		}
+         }
+ }
+ 
+ static void
+ collect_locales (void)
+ {
+-        gboolean found_archive_locales = FALSE;
++        gboolean found_localebin_locales = FALSE;
+         gboolean found_dir_locales = FALSE;
+-        GError *error = NULL;
+ 
+         if (gnome_available_locales_map == NULL) {
+                 gnome_available_locales_map = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, (GDestroyNotify) gnome_locale_free);
+         }
+ 
+-
+-        if (!collect_locales_from_archive (&found_archive_locales, &error)) {
+-                g_warning ("Failed to load locales from archive: %s", error->message);
+-                g_clear_error (&error);
+-        }
++        found_localebin_locales = collect_locales_from_localebin ();
+ 
+         found_dir_locales = collect_locales_from_directory ();
+ 
+-        if (!(found_archive_locales || found_dir_locales)) {
+-#ifndef WITH_INCOMPLETE_LOCALES
++        if (!(found_localebin_locales || found_dir_locales)) {
+                 g_warning ("Could not read list of available locales from libc, "
+                            "guessing possible locales from available translations, "
+                            "but list may be incomplete!");
+-#endif
+         }
+ 
+ 	count_languages_and_territories ();
+ }
+ 
+ static gint
+ get_language_count (const char *language)
+ {
+         if (gnome_language_count_map == NULL) {
+                 collect_locales ();
+         }
+ 
+ 	return GPOINTER_TO_INT (g_hash_table_lookup (gnome_language_count_map, language));
+ }
+ 
+ static gboolean
+ is_unique_language (const char *language)
+ {
+         return get_language_count (language) == 1;
+ }
+ 
+ static gint
+ get_territory_count (const char *territory)
+ {
+         if (gnome_territory_count_map == NULL) {
+                 collect_locales ();
+         }
+ 
+ 	return GPOINTER_TO_INT (g_hash_table_lookup (gnome_territory_count_map, territory));
+ }
+-- 
+1.8.4.2
+
+
+From 1dbefdc924691017e2ce9c3380b447bae8211723 Mon Sep 17 00:00:00 2001
+From: Stefan Sperling <stsp@stsp.name>
+Date: Wed, 2 Oct 2013 18:58:17 +0200
+Subject: [PATCH 2/4] languages: Style fix in collect_locales_from_localebin()
+
+Use spare-before-paren syntax for function calls.
+---
+ libgnome-desktop/gnome-languages.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/libgnome-desktop/gnome-languages.c b/libgnome-desktop/gnome-languages.c
+index 667eb81..f3e3d06 100644
+--- a/libgnome-desktop/gnome-languages.c
++++ b/libgnome-desktop/gnome-languages.c
+@@ -523,64 +523,64 @@ collect_locales_from_directory (void)
+ 
+         if (ndirents > 0) {
+                 free (dirents);
+         }
+         return found_locales;
+ }
+ 
+ static gboolean
+ collect_locales_from_localebin (void)
+ {
+         gboolean found_locales = FALSE;
+         gchar    *argv[] = { "locale", "-a", NULL };
+         gchar    *output;
+         gchar    **lines, **linep;
+ 
+         if (g_spawn_sync (NULL, argv, NULL,
+                           G_SPAWN_SEARCH_PATH|G_SPAWN_STDERR_TO_DEV_NULL,
+                           NULL, NULL, &output, NULL, NULL, NULL) == FALSE)
+                 return FALSE;
+ 
+         g_return_val_if_fail (output != NULL, FALSE);
+ 
+         lines = g_strsplit (output, "\n", 0);
+         if (lines) {
+                 linep = lines;
+                 while (*linep) {
+                         if (*linep[0] && add_locale (*linep, TRUE))
+                                 found_locales = TRUE;
+                         linep++;
+                 }
+-                g_strfreev(lines);
++                g_strfreev (lines);
+         }
+ 
+-        g_free(output);
++        g_free (output);
+ 
+         return found_locales;
+ }
+ 
+ static void
+ count_languages_and_territories (void)
+ {
+ 	gpointer value;
+ 	GHashTableIter iter;
+ 
+ 	gnome_language_count_map = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+ 	gnome_territory_count_map = g_hash_table_new_full (g_str_hash, g_str_equal, g_free, NULL);
+ 
+         g_hash_table_iter_init (&iter, gnome_available_locales_map);
+         while (g_hash_table_iter_next (&iter, NULL, &value)) {
+                 GnomeLocale *locale;
+ 
+                 locale = (GnomeLocale *) value;
+ 
+ 		if (locale->language_code != NULL) {
+ 			int count;
+ 
+ 			count = GPOINTER_TO_INT (g_hash_table_lookup (gnome_language_count_map, locale->language_code));
+ 			count++;
+ 			g_hash_table_insert (gnome_language_count_map, g_strdup (locale->language_code), GINT_TO_POINTER (count));
+ 		}
+ 
+ 		if (locale->territory_code != NULL) {
+ 			int count;
+ 
+-- 
+1.8.4.2
+
+
+From 9460a9fa6eff78d7ba1f176447550f66cecac770 Mon Sep 17 00:00:00 2001
+From: Stefan Sperling <stsp@stsp.name>
+Date: Wed, 2 Oct 2013 18:59:11 +0200
+Subject: [PATCH 3/4] languages: Remove unused struct "nameent"
+
+This struct was a left-over from the libc locale archive parsing code
+removed in commit 91082e8d0ef7dc3fe372fb5228fd3bb5a26efa81.
+---
+ libgnome-desktop/gnome-languages.c | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/libgnome-desktop/gnome-languages.c b/libgnome-desktop/gnome-languages.c
+index f3e3d06..a4f9bd2 100644
+--- a/libgnome-desktop/gnome-languages.c
++++ b/libgnome-desktop/gnome-languages.c
+@@ -443,66 +443,60 @@ add_locale (const char *language_name,
+         locale->name = construct_language_name (locale->language_code, locale->territory_code,
+                                                 locale->codeset, locale->modifier);
+ 
+         if (!gnome_language_has_translations (locale->name) &&
+             !gnome_language_has_translations (locale->id) &&
+             !gnome_language_has_translations (locale->language_code) &&
+             utf8_only) {
+                 g_debug ("Ignoring '%s' as a locale, since it lacks translations", locale->name);
+                 gnome_locale_free (locale);
+                 return FALSE;
+         }
+ 
+         if (!utf8_only) {
+                 g_free (locale->id);
+                 locale->id = g_strdup (locale->name);
+         }
+ 
+         old_locale = g_hash_table_lookup (gnome_available_locales_map, locale->id);
+         if (old_locale != NULL) {
+                 if (strlen (old_locale->name) > strlen (locale->name)) {
+                         gnome_locale_free (locale);
+                         return FALSE;
+                 }
+         }
+ 
+         g_hash_table_insert (gnome_available_locales_map, g_strdup (locale->id), locale);
+ 
+         return TRUE;
+ }
+ 
+-struct nameent
+-{
+-        char    *name;
+-        guint32 locrec_offset;
+-};
+-
+ static int
+ select_dirs (const struct dirent *dirent)
+ {
+         int result = 0;
+ 
+         if (strcmp (dirent->d_name, ".") != 0 && strcmp (dirent->d_name, "..") != 0) {
+                 mode_t mode = 0;
+ 
+ #ifdef _DIRENT_HAVE_D_TYPE
+                 if (dirent->d_type != DT_UNKNOWN && dirent->d_type != DT_LNK) {
+                         mode = DTTOIF (dirent->d_type);
+                 } else
+ #endif
+                         {
+                                 struct stat st;
+                                 char       *path;
+ 
+                                 path = g_build_filename (LIBLOCALEDIR, dirent->d_name, NULL);
+                                 if (g_stat (path, &st) == 0) {
+                                         mode = st.st_mode;
+                                 }
+                                 g_free (path);
+                         }
+ 
+                 result = S_ISDIR (mode);
+         }
+ 
+         return result;
+ }
+ 
+-- 
+1.8.4.2
+
+
+From c02734c975d121a8200a4de0628ab073720e7eae Mon Sep 17 00:00:00 2001
+From: Florian Weimer <fweimer@redhat.com>
+Date: Fri, 20 Dec 2013 11:59:08 +0100
+Subject: [PATCH 4/4] Remove locarchive.h
+
+This include file is no longer needed since the switch to
+"locale -a" for listing locales.
+
+https://bugzilla.gnome.org/show_bug.cgi?id=720815
+---
+ libgnome-desktop/Makefile.am | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/libgnome-desktop/Makefile.am b/libgnome-desktop/Makefile.am
+index 7041be5..e2382b6 100644
+--- a/libgnome-desktop/Makefile.am
++++ b/libgnome-desktop/Makefile.am
+@@ -19,62 +19,61 @@ AM_CPPFLAGS =							\
+ AM_CFLAGS = $(WARN_CFLAGS)
+ 
+ libgsystem_srcpath := libgsystem
+ libgsystem_cflags = $(GNOME_DESKTOP_CFLAGS)
+ libgsystem_libs = $(GNOME_DESKTOP_LIBS)
+ include libgsystem/Makefile-libgsystem.am
+ 
+ introspection_sources = 		\
+ 	gnome-desktop-thumbnail.c 	\
+ 	gnome-thumbnail-pixbuf-utils.c 	\
+ 	gnome-bg.c			\
+ 	gnome-bg-slide-show.c		\
+ 	gnome-bg-crossfade.c		\
+ 	display-name.c			\
+ 	gnome-rr.c			\
+ 	gnome-rr-config.c		\
+ 	gnome-rr-output-info.c		\
+ 	gnome-pnp-ids.c			\
+ 	gnome-wall-clock.c		\
+ 	gnome-xkb-info.c		\
+ 	gnome-idle-monitor.c		\
+ 	gnome-languages.c		\
+ 	edid-parse.c
+ 
+ libgnome_desktop_3_la_SOURCES = 	\
+ 	$(introspection_sources)	\
+ 	gnome-datetime-source.h		\
+ 	gnome-datetime-source.c		\
+ 	gnome-rr-private.h		\
+ 	default-input-sources.h		\
+-	edid.h				\
+-	locarchive.h
++	edid.h
+ 
+ libgnome_desktop_3_la_LIBADD =	\
+ 	$(XLIB_LIBS)		\
+ 	$(LIBM)			\
+ 	$(GNOME_DESKTOP_LIBS)	\
+ 	libgsystem.la           \
+ 	-lrt
+ 
+ libgnome_desktop_3_la_LDFLAGS = \
+ 	-version-info $(LT_VERSION) \
+ 	-export-symbols-regex "^gnome_.*" \
+ 	-no-undefined
+ 
+ pkgconfigdir = $(libdir)/pkgconfig
+ pkgconfig_DATA = gnome-desktop-3.0.pc
+ 
+ libgnome_desktopdir = $(includedir)/gnome-desktop-3.0/libgnome-desktop
+ libgnome_desktop_HEADERS = \
+         gnome-bg.h                      \
+         gnome-bg-crossfade.h            \
+ 	gnome-bg-slide-show.h		\
+         gnome-desktop-thumbnail.h       \
+         gnome-rr.h                      \
+         gnome-rr-config.h               \
+         gnome-pnp-ids.h			\
+         gnome-wall-clock.h		\
+ 	gnome-xkb-info.h		\
+ 	gnome-idle-monitor.h		\
+ 	gnome-languages.h
+ 
+-- 
+1.8.4.2
+

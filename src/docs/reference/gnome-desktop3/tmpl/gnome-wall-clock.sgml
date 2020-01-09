@@ -1,0 +1,79 @@
+<!-- ##### SECTION Title ##### -->
+GnomeWallClock
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT GnomeWallClock ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### ARG GnomeWallClock:clock ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG GnomeWallClock:time-only ##### -->
+<para>
+
+</para>
+
+<!-- ##### ARG GnomeWallClock:timezone ##### -->
+<para>
+
+</para>
+
+<!-- ##### STRUCT GnomeWallClockClass ##### -->
+<para>
+
+</para>
+
+@parent_class: 
+
+<!-- ##### FUNCTION gnome_wall_clock_new ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_wall_clock_get_clock ##### -->
+<para>
+
+</para>
+
+@clock: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_wall_clock_get_timezone ##### -->
+<para>
+
+</para>
+
+@clock: 
+@Returns: 
+
+

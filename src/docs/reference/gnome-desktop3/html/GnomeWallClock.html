@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GnomeWallClock</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GNOME Desktop Library Reference Manual">
+<link rel="up" href="wall-clock.html" title="Part VI. Wall Clock">
+<link rel="prev" href="wall-clock.html" title="Part VI. Wall Clock">
+<link rel="next" href="xkb-info.html" title="Part VII. X Keyboard Information">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="wall-clock.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="wall-clock.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GNOME Desktop Library Reference Manual</th>
+<td><a accesskey="n" href="xkb-info.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GnomeWallClock.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GnomeWallClock.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GnomeWallClock.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#GnomeWallClock.properties" class="shortcut">Properties</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="GnomeWallClock"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GnomeWallClock.top_of_page"></a>GnomeWallClock</span></h2>
+<p>GnomeWallClock</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GnomeWallClock.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="GnomeWallClock.html#GnomeWallClock-struct" title="struct GnomeWallClock">GnomeWallClock</a>;
+struct              <a class="link" href="GnomeWallClock.html#GnomeWallClockClass" title="struct GnomeWallClockClass">GnomeWallClockClass</a>;
+<a class="link" href="GnomeWallClock.html" title="GnomeWallClock"><span class="returnvalue">GnomeWallClock</span></a> *    <a class="link" href="GnomeWallClock.html#gnome-wall-clock-new" title="gnome_wall_clock_new ()">gnome_wall_clock_new</a>                (<em class="parameter"><code><span class="type">void</span></code></em>);
+const <span class="returnvalue">char</span> *        <a class="link" href="GnomeWallClock.html#gnome-wall-clock-get-clock" title="gnome_wall_clock_get_clock ()">gnome_wall_clock_get_clock</a>          (<em class="parameter"><code><a class="link" href="GnomeWallClock.html" title="GnomeWallClock"><span class="type">GnomeWallClock</span></a> *clock</code></em>);
+<span class="returnvalue">GTimeZone</span> *         <a class="link" href="GnomeWallClock.html#gnome-wall-clock-get-timezone" title="gnome_wall_clock_get_timezone ()">gnome_wall_clock_get_timezone</a>       (<em class="parameter"><code><a class="link" href="GnomeWallClock.html" title="GnomeWallClock"><span class="type">GnomeWallClock</span></a> *clock</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="GnomeWallClock.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GnomeWallClock
+</pre>
+</div>
+<div class="refsect1">
+<a name="GnomeWallClock.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GnomeWallClock.html#GnomeWallClock--clock" title='The "clock" property'>clock</a>"                    <span class="type">gchar</span>*                : Read
+  "<a class="link" href="GnomeWallClock.html#GnomeWallClock--time-only" title='The "time-only" property'>time-only</a>"                <span class="type">gboolean</span>              : Read / Write
+  "<a class="link" href="GnomeWallClock.html#GnomeWallClock--timezone" title='The "timezone" property'>timezone</a>"                 <span class="type">GTimeZone</span>*            : Read
+</pre>
+</div>
+<div class="refsect1">
+<a name="GnomeWallClock.description"></a><h2>Description</h2>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="GnomeWallClock.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GnomeWallClock-struct"></a><h3>struct GnomeWallClock</h3>
+<pre class="programlisting">struct GnomeWallClock;</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GnomeWallClockClass"></a><h3>struct GnomeWallClockClass</h3>
+<pre class="programlisting">struct GnomeWallClockClass {
+	GObjectClass parent_class;
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-wall-clock-new"></a><h3>gnome_wall_clock_new ()</h3>
+<pre class="programlisting"><a class="link" href="GnomeWallClock.html" title="GnomeWallClock"><span class="returnvalue">GnomeWallClock</span></a> *    gnome_wall_clock_new                (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Creates a new <a class="link" href="GnomeWallClock.html" title="GnomeWallClock"><span class="type">GnomeWallClock</span></a>
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the new clock</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-wall-clock-get-clock"></a><h3>gnome_wall_clock_get_clock ()</h3>
+<pre class="programlisting">const <span class="returnvalue">char</span> *        gnome_wall_clock_get_clock          (<em class="parameter"><code><a class="link" href="GnomeWallClock.html" title="GnomeWallClock"><span class="type">GnomeWallClock</span></a> *clock</code></em>);</pre>
+<p>
+Returns the string representing the current time of this clock
+according to the user settings.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>clock</code></em> :</span></p></td>
+<td>a <a class="link" href="GnomeWallClock.html" title="GnomeWallClock"><span class="type">GnomeWallClock</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the time of the clock as a string.
+This string points to internally allocated storage and
+must not be freed, modified or stored.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-wall-clock-get-timezone"></a><h3>gnome_wall_clock_get_timezone ()</h3>
+<pre class="programlisting"><span class="returnvalue">GTimeZone</span> *         gnome_wall_clock_get_timezone       (<em class="parameter"><code><a class="link" href="GnomeWallClock.html" title="GnomeWallClock"><span class="type">GnomeWallClock</span></a> *clock</code></em>);</pre>
+<p>
+Returns the current local time zone used by this clock.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>clock</code></em> :</span></p></td>
+<td>a <a class="link" href="GnomeWallClock.html" title="GnomeWallClock"><span class="type">GnomeWallClock</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the <span class="type">GTimeZone</span> of the clock. <span class="annotation">[<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GnomeWallClock.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GnomeWallClock--clock"></a><h3>The <code class="literal">"clock"</code> property</h3>
+<pre class="programlisting">  "clock"                    <span class="type">gchar</span>*                : Read</pre>
+<p>
+A formatted string representing the current clock display.
+</p>
+<p>Default value: NULL</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GnomeWallClock--time-only"></a><h3>The <code class="literal">"time-only"</code> property</h3>
+<pre class="programlisting">  "time-only"                <span class="type">gboolean</span>              : Read / Write</pre>
+<p>
+If <code class="literal">TRUE</code>, the formatted clock will never include a date or the
+day of the week, irrespective of configuration.
+</p>
+<p>Default value: FALSE</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GnomeWallClock--timezone"></a><h3>The <code class="literal">"timezone"</code> property</h3>
+<pre class="programlisting">  "timezone"                 <span class="type">GTimeZone</span>*            : Read</pre>
+<p>
+The timezone used for this clock
+</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

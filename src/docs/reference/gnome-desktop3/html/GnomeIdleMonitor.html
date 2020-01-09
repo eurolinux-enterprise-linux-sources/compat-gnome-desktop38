@@ -1,0 +1,328 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GnomeIdleMonitor</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GNOME Desktop Library Reference Manual">
+<link rel="up" href="idle-monitor.html" title="Part V. Idle Monitor">
+<link rel="prev" href="idle-monitor.html" title="Part V. Idle Monitor">
+<link rel="next" href="wall-clock.html" title="Part VI. Wall Clock">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="idle-monitor.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="idle-monitor.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GNOME Desktop Library Reference Manual</th>
+<td><a accesskey="n" href="wall-clock.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GnomeIdleMonitor.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GnomeIdleMonitor.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GnomeIdleMonitor.object-hierarchy" class="shortcut">Object Hierarchy</a>
+                   | 
+                  <a href="#GnomeIdleMonitor.implemented-interfaces" class="shortcut">Implemented Interfaces</a>
+                   | 
+                  <a href="#GnomeIdleMonitor.properties" class="shortcut">Properties</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="GnomeIdleMonitor"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GnomeIdleMonitor.top_of_page"></a>GnomeIdleMonitor</span></h2>
+<p>GnomeIdleMonitor</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GnomeIdleMonitor.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="GnomeIdleMonitor.html#GnomeIdleMonitor-struct" title="struct GnomeIdleMonitor">GnomeIdleMonitor</a>;
+struct              <a class="link" href="GnomeIdleMonitor.html#GnomeIdleMonitorClass" title="struct GnomeIdleMonitorClass">GnomeIdleMonitorClass</a>;
+<span class="returnvalue">void</span>                (<a class="link" href="GnomeIdleMonitor.html#GnomeIdleMonitorWatchFunc" title="GnomeIdleMonitorWatchFunc ()">*GnomeIdleMonitorWatchFunc</a>)        (<em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a> *monitor</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> id</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);
+<a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="returnvalue">GnomeIdleMonitor</span></a> *  <a class="link" href="GnomeIdleMonitor.html#gnome-idle-monitor-new" title="gnome_idle_monitor_new ()">gnome_idle_monitor_new</a>              (<em class="parameter"><code><span class="type">void</span></code></em>);
+<a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="returnvalue">GnomeIdleMonitor</span></a> *  <a class="link" href="GnomeIdleMonitor.html#gnome-idle-monitor-new-for-device" title="gnome_idle_monitor_new_for_device ()">gnome_idle_monitor_new_for_device</a>   (<em class="parameter"><code><span class="type">GdkDevice</span> *device</code></em>);
+<span class="returnvalue">guint</span>               <a class="link" href="GnomeIdleMonitor.html#gnome-idle-monitor-add-idle-watch" title="gnome_idle_monitor_add_idle_watch ()">gnome_idle_monitor_add_idle_watch</a>   (<em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a> *monitor</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint64</span> interval_msec</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html#GnomeIdleMonitorWatchFunc" title="GnomeIdleMonitorWatchFunc ()"><span class="type">GnomeIdleMonitorWatchFunc</span></a> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>,
+                                                         <em class="parameter"><code><span class="type">GDestroyNotify</span> notify</code></em>);
+<span class="returnvalue">guint</span>               <a class="link" href="GnomeIdleMonitor.html#gnome-idle-monitor-add-user-active-watch" title="gnome_idle_monitor_add_user_active_watch ()">gnome_idle_monitor_add_user_active_watch</a>
+                                                        (<em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a> *monitor</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html#GnomeIdleMonitorWatchFunc" title="GnomeIdleMonitorWatchFunc ()"><span class="type">GnomeIdleMonitorWatchFunc</span></a> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>,
+                                                         <em class="parameter"><code><span class="type">GDestroyNotify</span> notify</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GnomeIdleMonitor.html#gnome-idle-monitor-remove-watch" title="gnome_idle_monitor_remove_watch ()">gnome_idle_monitor_remove_watch</a>     (<em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a> *monitor</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> id</code></em>);
+<span class="returnvalue">gint64</span>              <a class="link" href="GnomeIdleMonitor.html#gnome-idle-monitor-get-idletime" title="gnome_idle_monitor_get_idletime ()">gnome_idle_monitor_get_idletime</a>     (<em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a> *monitor</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="GnomeIdleMonitor.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GnomeIdleMonitor
+</pre>
+</div>
+<div class="refsect1">
+<a name="GnomeIdleMonitor.implemented-interfaces"></a><h2>Implemented Interfaces</h2>
+<p>
+GnomeIdleMonitor implements
+ GInitable.</p>
+</div>
+<div class="refsect1">
+<a name="GnomeIdleMonitor.properties"></a><h2>Properties</h2>
+<pre class="synopsis">
+  "<a class="link" href="GnomeIdleMonitor.html#GnomeIdleMonitor--device" title='The "device" property'>device</a>"                   <span class="type">GdkDevice</span>*            : Read / Write / Construct Only
+</pre>
+</div>
+<div class="refsect1">
+<a name="GnomeIdleMonitor.description"></a><h2>Description</h2>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="GnomeIdleMonitor.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GnomeIdleMonitor-struct"></a><h3>struct GnomeIdleMonitor</h3>
+<pre class="programlisting">struct GnomeIdleMonitor;</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GnomeIdleMonitorClass"></a><h3>struct GnomeIdleMonitorClass</h3>
+<pre class="programlisting">struct GnomeIdleMonitorClass {
+        GObjectClass          parent_class;
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GnomeIdleMonitorWatchFunc"></a><h3>GnomeIdleMonitorWatchFunc ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                (*GnomeIdleMonitorWatchFunc)        (<em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a> *monitor</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> id</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>);</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-idle-monitor-new"></a><h3>gnome_idle_monitor_new ()</h3>
+<pre class="programlisting"><a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="returnvalue">GnomeIdleMonitor</span></a> *  gnome_idle_monitor_new              (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a new <a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a> that tracks the server-global
+idletime for all devices. To track device-specific idletime,
+use <a class="link" href="GnomeIdleMonitor.html#gnome-idle-monitor-new-for-device" title="gnome_idle_monitor_new_for_device ()"><code class="function">gnome_idle_monitor_new_for_device()</code></a>.</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-idle-monitor-new-for-device"></a><h3>gnome_idle_monitor_new_for_device ()</h3>
+<pre class="programlisting"><a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="returnvalue">GnomeIdleMonitor</span></a> *  gnome_idle_monitor_new_for_device   (<em class="parameter"><code><span class="type">GdkDevice</span> *device</code></em>);</pre>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>device</code></em> :</span></p></td>
+<td>A <span class="type">GdkDevice</span> to get the idle time for.</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a new <a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a> that tracks the device-specific
+idletime for <em class="parameter"><code>device</code></em>. If device-specific idletime is not available,
+<a href="/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a> is returned, and <em class="parameter"><code>error</code></em> is set. To track server-global
+idletime for all devices, use <a class="link" href="GnomeIdleMonitor.html#gnome-idle-monitor-new" title="gnome_idle_monitor_new ()"><code class="function">gnome_idle_monitor_new()</code></a>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-idle-monitor-add-idle-watch"></a><h3>gnome_idle_monitor_add_idle_watch ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>               gnome_idle_monitor_add_idle_watch   (<em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a> *monitor</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint64</span> interval_msec</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html#GnomeIdleMonitorWatchFunc" title="GnomeIdleMonitorWatchFunc ()"><span class="type">GnomeIdleMonitorWatchFunc</span></a> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>,
+                                                         <em class="parameter"><code><span class="type">GDestroyNotify</span> notify</code></em>);</pre>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>monitor</code></em> :</span></p></td>
+<td>A <a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>interval_msec</code></em> :</span></p></td>
+<td>The idletime interval, in milliseconds</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>The callback to call when the user has
+accumulated <em class="parameter"><code>interval_msec</code></em> milliseconds of idle time. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The user data to pass to the callback. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>notify</code></em> :</span></p></td>
+<td>A <span class="type">GDestroyNotify</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a watch id
+Adds a watch for a specific idle time. The callback will be called
+when the user has accumulated <em class="parameter"><code>interval_msec</code></em> milliseconds of idle time.
+This function will return an ID that can either be passed to
+<a class="link" href="GnomeIdleMonitor.html#gnome-idle-monitor-remove-watch" title="gnome_idle_monitor_remove_watch ()"><code class="function">gnome_idle_monitor_remove_watch()</code></a>, or can be used to tell idle time
+watches apart if you have more than one.
+Also note that this function will only care about positive transitions
+(user's idle time exceeding a certain time). If you want to know about
+when the user has become active, use
+<a class="link" href="GnomeIdleMonitor.html#gnome-idle-monitor-add-user-active-watch" title="gnome_idle_monitor_add_user_active_watch ()"><code class="function">gnome_idle_monitor_add_user_active_watch()</code></a>.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-idle-monitor-add-user-active-watch"></a><h3>gnome_idle_monitor_add_user_active_watch ()</h3>
+<pre class="programlisting"><span class="returnvalue">guint</span>               gnome_idle_monitor_add_user_active_watch
+                                                        (<em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a> *monitor</code></em>,
+                                                         <em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html#GnomeIdleMonitorWatchFunc" title="GnomeIdleMonitorWatchFunc ()"><span class="type">GnomeIdleMonitorWatchFunc</span></a> callback</code></em>,
+                                                         <em class="parameter"><code><span class="type">gpointer</span> user_data</code></em>,
+                                                         <em class="parameter"><code><span class="type">GDestroyNotify</span> notify</code></em>);</pre>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>monitor</code></em> :</span></p></td>
+<td>A <a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>callback</code></em> :</span></p></td>
+<td>The callback to call when the user is
+active again. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>user_data</code></em> :</span></p></td>
+<td>The user data to pass to the callback. <span class="annotation">[<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>notify</code></em> :</span></p></td>
+<td>A <span class="type">GDestroyNotify</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a watch id
+Add a one-time watch to know when the user is active again.
+Note that this watch is one-time and will de-activate after the
+function is called, for efficiency purposes. It's most convenient
+to call this when an idle watch, as added by
+<a class="link" href="GnomeIdleMonitor.html#gnome-idle-monitor-add-idle-watch" title="gnome_idle_monitor_add_idle_watch ()"><code class="function">gnome_idle_monitor_add_idle_watch()</code></a>, has triggered.</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-idle-monitor-remove-watch"></a><h3>gnome_idle_monitor_remove_watch ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnome_idle_monitor_remove_watch     (<em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a> *monitor</code></em>,
+                                                         <em class="parameter"><code><span class="type">guint</span> id</code></em>);</pre>
+<p>
+Removes an idle time watcher, previously added by
+<a class="link" href="GnomeIdleMonitor.html#gnome-idle-monitor-add-idle-watch" title="gnome_idle_monitor_add_idle_watch ()"><code class="function">gnome_idle_monitor_add_idle_watch()</code></a> or
+<a class="link" href="GnomeIdleMonitor.html#gnome-idle-monitor-add-user-active-watch" title="gnome_idle_monitor_add_user_active_watch ()"><code class="function">gnome_idle_monitor_add_user_active_watch()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>monitor</code></em> :</span></p></td>
+<td>A <a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>id</code></em> :</span></p></td>
+<td>A watch ID</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-idle-monitor-get-idletime"></a><h3>gnome_idle_monitor_get_idletime ()</h3>
+<pre class="programlisting"><span class="returnvalue">gint64</span>              gnome_idle_monitor_get_idletime     (<em class="parameter"><code><a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a> *monitor</code></em>);</pre>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>monitor</code></em> :</span></p></td>
+<td>A <a class="link" href="GnomeIdleMonitor.html" title="GnomeIdleMonitor"><span class="type">GnomeIdleMonitor</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>The current idle time, in milliseconds, or -1 for not supported</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="refsect1">
+<a name="GnomeIdleMonitor.property-details"></a><h2>Property Details</h2>
+<div class="refsect2">
+<a name="GnomeIdleMonitor--device"></a><h3>The <code class="literal">"device"</code> property</h3>
+<pre class="programlisting">  "device"                   <span class="type">GdkDevice</span>*            : Read / Write / Construct Only</pre>
+<p>
+The device to listen to idletime on.
+</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

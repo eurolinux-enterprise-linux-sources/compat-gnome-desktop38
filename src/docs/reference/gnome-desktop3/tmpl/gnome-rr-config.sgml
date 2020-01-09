@@ -1,0 +1,397 @@
+<!-- ##### SECTION Title ##### -->
+gnome-rr-config
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT GnomeRROutputInfo ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### STRUCT GnomeRROutputInfoClass ##### -->
+<para>
+
+</para>
+
+@parent_class: 
+
+<!-- ##### FUNCTION gnome_rr_output_info_get_aspect_ratio ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_get_display_name ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_get_geometry ##### -->
+<para>
+
+</para>
+
+@self: 
+@x: 
+@y: 
+@width: 
+@height: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_get_name ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_get_preferred_height ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_get_preferred_width ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_get_primary ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_get_product ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_get_refresh_rate ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_get_rotation ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_get_serial ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_get_vendor ##### -->
+<para>
+
+</para>
+
+@self: 
+@vendor: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_is_active ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_is_connected ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_set_active ##### -->
+<para>
+
+</para>
+
+@self: 
+@active: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_set_geometry ##### -->
+<para>
+
+</para>
+
+@self: 
+@x: 
+@y: 
+@width: 
+@height: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_set_primary ##### -->
+<para>
+
+</para>
+
+@self: 
+@primary: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_set_refresh_rate ##### -->
+<para>
+
+</para>
+
+@self: 
+@rate: 
+
+
+<!-- ##### FUNCTION gnome_rr_output_info_set_rotation ##### -->
+<para>
+
+</para>
+
+@self: 
+@rotation: 
+
+
+<!-- ##### STRUCT GnomeRRConfig ##### -->
+<para>
+
+</para>
+
+@parent: 
+
+<!-- ##### STRUCT GnomeRRConfigClass ##### -->
+<para>
+
+</para>
+
+@parent_class: 
+
+<!-- ##### FUNCTION gnome_rr_config_new_current ##### -->
+<para>
+
+</para>
+
+@screen: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_new_stored ##### -->
+<para>
+
+</para>
+
+@screen: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_match ##### -->
+<para>
+
+</para>
+
+@config1: 
+@config2: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_equal ##### -->
+<para>
+
+</para>
+
+@config1: 
+@config2: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_save ##### -->
+<para>
+
+</para>
+
+@configuration: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_sanitize ##### -->
+<para>
+
+</para>
+
+@configuration: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_apply_with_time ##### -->
+<para>
+
+</para>
+
+@configuration: 
+@screen: 
+@timestamp: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_apply_from_filename_with_time ##### -->
+<para>
+
+</para>
+
+@screen: 
+@filename: 
+@timestamp: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_applicable ##### -->
+<para>
+
+</para>
+
+@configuration: 
+@screen: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_get_backup_filename ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_get_intended_filename ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_ensure_primary ##### -->
+<para>
+
+</para>
+
+@configuration: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_get_clone ##### -->
+<para>
+
+</para>
+
+@configuration: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_get_outputs ##### -->
+<para>
+
+</para>
+
+@configuration: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_load_current ##### -->
+<para>
+
+</para>
+
+@self: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_load_filename ##### -->
+<para>
+
+</para>
+
+@self: 
+@filename: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_rr_config_set_clone ##### -->
+<para>
+
+</para>
+
+@configuration: 
+@clone: 
+
+

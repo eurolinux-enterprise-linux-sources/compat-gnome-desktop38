@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>gnome-pnp-ids</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GNOME Desktop Library Reference Manual">
+<link rel="up" href="randr.html" title="Part III. Monitor Configuration">
+<link rel="prev" href="gnome-desktop3-gnome-rr-config.html" title="gnome-rr-config">
+<link rel="next" href="thumbnail.html" title="Part IV. Thumbnails">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="gnome-desktop3-gnome-rr-config.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="randr.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GNOME Desktop Library Reference Manual</th>
+<td><a accesskey="n" href="thumbnail.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#gnome-desktop3-gnome-pnp-ids.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#gnome-desktop3-gnome-pnp-ids.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#gnome-desktop3-gnome-pnp-ids.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="gnome-desktop3-gnome-pnp-ids"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="gnome-desktop3-gnome-pnp-ids.top_of_page"></a>gnome-pnp-ids</span></h2>
+<p>gnome-pnp-ids</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="gnome-desktop3-gnome-pnp-ids.synopsis"></a><h2>Synopsis</h2>
+<a name="GnomePnpIds"></a><pre class="synopsis">struct              <a class="link" href="gnome-desktop3-gnome-pnp-ids.html#GnomePnpIds-struct" title="struct GnomePnpIds">GnomePnpIds</a>;
+struct              <a class="link" href="gnome-desktop3-gnome-pnp-ids.html#GnomePnpIdsClass" title="struct GnomePnpIdsClass">GnomePnpIdsClass</a>;
+#define             <a class="link" href="gnome-desktop3-gnome-pnp-ids.html#GNOME-PNP-IDS-ERROR:CAPS" title="GNOME_PNP_IDS_ERROR">GNOME_PNP_IDS_ERROR</a>
+<span class="returnvalue">gchar</span> *             <a class="link" href="gnome-desktop3-gnome-pnp-ids.html#gnome-pnp-ids-get-pnp-id" title="gnome_pnp_ids_get_pnp_id ()">gnome_pnp_ids_get_pnp_id</a>            (<em class="parameter"><code><a class="link" href="gnome-desktop3-gnome-pnp-ids.html#GnomePnpIds"><span class="type">GnomePnpIds</span></a> *pnp_ids</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *pnp_id</code></em>);
+<a class="link" href="gnome-desktop3-gnome-pnp-ids.html#GnomePnpIds"><span class="returnvalue">GnomePnpIds</span></a> *       <a class="link" href="gnome-desktop3-gnome-pnp-ids.html#gnome-pnp-ids-new" title="gnome_pnp_ids_new ()">gnome_pnp_ids_new</a>                   (<em class="parameter"><code><span class="type">void</span></code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="gnome-desktop3-gnome-pnp-ids.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GnomePnpIds
+</pre>
+</div>
+<div class="refsect1">
+<a name="gnome-desktop3-gnome-pnp-ids.description"></a><h2>Description</h2>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="gnome-desktop3-gnome-pnp-ids.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GnomePnpIds-struct"></a><h3>struct GnomePnpIds</h3>
+<pre class="programlisting">struct GnomePnpIds;</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GnomePnpIdsClass"></a><h3>struct GnomePnpIdsClass</h3>
+<pre class="programlisting">struct GnomePnpIdsClass {
+        GObjectClass    parent_class;
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GNOME-PNP-IDS-ERROR:CAPS"></a><h3>GNOME_PNP_IDS_ERROR</h3>
+<pre class="programlisting">#define GNOME_PNP_IDS_ERROR                (gnome_pnp_ids_error_quark ())
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-pnp-ids-get-pnp-id"></a><h3>gnome_pnp_ids_get_pnp_id ()</h3>
+<pre class="programlisting"><span class="returnvalue">gchar</span> *             gnome_pnp_ids_get_pnp_id            (<em class="parameter"><code><a class="link" href="gnome-desktop3-gnome-pnp-ids.html#GnomePnpIds"><span class="type">GnomePnpIds</span></a> *pnp_ids</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *pnp_id</code></em>);</pre>
+<p>
+Find the full manufacturer name for the given PNP ID.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pnp_ids</code></em> :</span></p></td>
+<td>a <a class="link" href="gnome-desktop3-gnome-pnp-ids.html#GnomePnpIds"><span class="type">GnomePnpIds</span></a> object</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>pnp_id</code></em> :</span></p></td>
+<td>the PNP ID to look for</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a new string representing the manufacturer name,
+or <a href="/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a> when not found. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-pnp-ids-new"></a><h3>gnome_pnp_ids_new ()</h3>
+<pre class="programlisting"><a class="link" href="gnome-desktop3-gnome-pnp-ids.html#GnomePnpIds"><span class="returnvalue">GnomePnpIds</span></a> *       gnome_pnp_ids_new                   (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<p>
+Returns a reference to a <a class="link" href="gnome-desktop3-gnome-pnp-ids.html#GnomePnpIds"><span class="type">GnomePnpIds</span></a> object, or creates
+a new one if none have been created.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a <a class="link" href="gnome-desktop3-gnome-pnp-ids.html#GnomePnpIds"><span class="type">GnomePnpIds</span></a> object. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!-- ##### SECTION Title ##### -->
+GnomeXkbInfo
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT GnomeXkbInfo ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### STRUCT GnomeXkbInfoClass ##### -->
+<para>
+
+</para>
+
+@parent_class: 
+
+<!-- ##### FUNCTION gnome_xkb_info_new ##### -->
+<para>
+
+</para>
+
+@void: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_xkb_info_get_all_layouts ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_xkb_info_get_layouts_for_country ##### -->
+<para>
+
+</para>
+
+@self: 
+@country_code: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_xkb_info_get_layouts_for_language ##### -->
+<para>
+
+</para>
+
+@self: 
+@language_code: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_xkb_info_get_layout_info ##### -->
+<para>
+
+</para>
+
+@self: 
+@id: 
+@display_name: 
+@short_name: 
+@xkb_layout: 
+@xkb_variant: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_xkb_info_get_all_option_groups ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_xkb_info_description_for_group ##### -->
+<para>
+
+</para>
+
+@self: 
+@group_id: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_xkb_info_get_options_for_group ##### -->
+<para>
+
+</para>
+
+@self: 
+@group_id: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_xkb_info_description_for_option ##### -->
+<para>
+
+</para>
+
+@self: 
+@group_id: 
+@id: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_xkb_info_get_var_defs ##### -->
+<para>
+
+</para>
+
+@rules: 
+@var_defs: 
+
+
+<!-- ##### FUNCTION gnome_xkb_info_free_var_defs ##### -->
+<para>
+
+</para>
+
+@var_defs: 
+
+

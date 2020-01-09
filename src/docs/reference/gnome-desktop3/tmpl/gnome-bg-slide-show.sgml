@@ -1,0 +1,137 @@
+<!-- ##### SECTION Title ##### -->
+GnomeBGSlideShow
+
+<!-- ##### SECTION Short_Description ##### -->
+
+
+<!-- ##### SECTION Long_Description ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION See_Also ##### -->
+<para>
+
+</para>
+
+
+<!-- ##### SECTION Stability_Level ##### -->
+
+
+<!-- ##### SECTION Image ##### -->
+
+
+<!-- ##### STRUCT GnomeBGSlideShow ##### -->
+<para>
+
+</para>
+
+@parent_object: 
+@priv: 
+
+<!-- ##### STRUCT GnomeBGSlideShowClass ##### -->
+<para>
+
+</para>
+
+@parent_class: 
+
+<!-- ##### FUNCTION gnome_bg_slide_show_new ##### -->
+<para>
+
+</para>
+
+@filename: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_bg_slide_show_load ##### -->
+<para>
+
+</para>
+
+@self: 
+@error: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_bg_slide_show_load_async ##### -->
+<para>
+
+</para>
+
+@self: 
+@cancellable: 
+@callback: 
+@user_data: 
+
+
+<!-- ##### FUNCTION gnome_bg_slide_show_get_current_slide ##### -->
+<para>
+
+</para>
+
+@self: 
+@width: 
+@height: 
+@progress: 
+@duration: 
+@is_fixed: 
+@file1: 
+@file2: 
+
+
+<!-- ##### FUNCTION gnome_bg_slide_show_get_has_multiple_sizes ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_bg_slide_show_get_num_slides ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_bg_slide_show_get_slide ##### -->
+<para>
+
+</para>
+
+@self: 
+@frame_number: 
+@width: 
+@height: 
+@progress: 
+@duration: 
+@is_fixed: 
+@file1: 
+@file2: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_bg_slide_show_get_start_time ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+
+<!-- ##### FUNCTION gnome_bg_slide_show_get_total_duration ##### -->
+<para>
+
+</para>
+
+@self: 
+@Returns: 
+
+

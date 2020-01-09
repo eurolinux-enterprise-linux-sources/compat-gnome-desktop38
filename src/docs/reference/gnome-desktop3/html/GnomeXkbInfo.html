@@ -1,0 +1,486 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>GnomeXkbInfo</title>
+<meta name="generator" content="DocBook XSL Stylesheets V1.78.1">
+<link rel="home" href="index.html" title="GNOME Desktop Library Reference Manual">
+<link rel="up" href="xkb-info.html" title="Part VII. X Keyboard Information">
+<link rel="prev" href="xkb-info.html" title="Part VII. X Keyboard Information">
+<link rel="next" href="languages.html" title="Part VIII. Language Utilities">
+<meta name="generator" content="GTK-Doc V1.19 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="2">
+<tr valign="middle">
+<td><a accesskey="p" href="xkb-info.html"><img src="left.png" width="24" height="24" border="0" alt="Prev"></a></td>
+<td><a accesskey="u" href="xkb-info.html"><img src="up.png" width="24" height="24" border="0" alt="Up"></a></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="24" height="24" border="0" alt="Home"></a></td>
+<th width="100%" align="center">GNOME Desktop Library Reference Manual</th>
+<td><a accesskey="n" href="languages.html"><img src="right.png" width="24" height="24" border="0" alt="Next"></a></td>
+</tr>
+<tr><td colspan="5" class="shortcuts">
+<a href="#GnomeXkbInfo.synopsis" class="shortcut">Top</a>
+                   | 
+                  <a href="#GnomeXkbInfo.description" class="shortcut">Description</a>
+                   | 
+                  <a href="#GnomeXkbInfo.object-hierarchy" class="shortcut">Object Hierarchy</a>
+</td></tr>
+</table>
+<div class="refentry">
+<a name="GnomeXkbInfo"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="GnomeXkbInfo.top_of_page"></a>GnomeXkbInfo</span></h2>
+<p>GnomeXkbInfo</p>
+</td>
+<td valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsynopsisdiv">
+<a name="GnomeXkbInfo.synopsis"></a><h2>Synopsis</h2>
+<pre class="synopsis">struct              <a class="link" href="GnomeXkbInfo.html#GnomeXkbInfo-struct" title="struct GnomeXkbInfo">GnomeXkbInfo</a>;
+struct              <a class="link" href="GnomeXkbInfo.html#GnomeXkbInfoClass" title="struct GnomeXkbInfoClass">GnomeXkbInfoClass</a>;
+<a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="returnvalue">GnomeXkbInfo</span></a> *      <a class="link" href="GnomeXkbInfo.html#gnome-xkb-info-new" title="gnome_xkb_info_new ()">gnome_xkb_info_new</a>                  (<em class="parameter"><code><span class="type">void</span></code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="GnomeXkbInfo.html#gnome-xkb-info-get-all-layouts" title="gnome_xkb_info_get_all_layouts ()">gnome_xkb_info_get_all_layouts</a>      (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="GnomeXkbInfo.html#gnome-xkb-info-get-layouts-for-country" title="gnome_xkb_info_get_layouts_for_country ()">gnome_xkb_info_get_layouts_for_country</a>
+                                                        (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *country_code</code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="GnomeXkbInfo.html#gnome-xkb-info-get-layouts-for-language" title="gnome_xkb_info_get_layouts_for_language ()">gnome_xkb_info_get_layouts_for_language</a>
+                                                        (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *language_code</code></em>);
+<span class="returnvalue">gboolean</span>            <a class="link" href="GnomeXkbInfo.html#gnome-xkb-info-get-layout-info" title="gnome_xkb_info_get_layout_info ()">gnome_xkb_info_get_layout_info</a>      (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *id</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> **display_name</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> **short_name</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> **xkb_layout</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> **xkb_variant</code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="GnomeXkbInfo.html#gnome-xkb-info-get-all-option-groups" title="gnome_xkb_info_get_all_option_groups ()">gnome_xkb_info_get_all_option_groups</a>
+                                                        (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>);
+const <span class="returnvalue">gchar</span> *       <a class="link" href="GnomeXkbInfo.html#gnome-xkb-info-description-for-group" title="gnome_xkb_info_description_for_group ()">gnome_xkb_info_description_for_group</a>
+                                                        (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *group_id</code></em>);
+<span class="returnvalue">GList</span> *             <a class="link" href="GnomeXkbInfo.html#gnome-xkb-info-get-options-for-group" title="gnome_xkb_info_get_options_for_group ()">gnome_xkb_info_get_options_for_group</a>
+                                                        (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *group_id</code></em>);
+const <span class="returnvalue">gchar</span> *       <a class="link" href="GnomeXkbInfo.html#gnome-xkb-info-description-for-option" title="gnome_xkb_info_description_for_option ()">gnome_xkb_info_description_for_option</a>
+                                                        (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *group_id</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *id</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GnomeXkbInfo.html#gnome-xkb-info-get-var-defs" title="gnome_xkb_info_get_var_defs ()">gnome_xkb_info_get_var_defs</a>         (<em class="parameter"><code><span class="type">gchar</span> **rules</code></em>,
+                                                         <em class="parameter"><code><span class="type">XkbRF_VarDefsRec</span> **var_defs</code></em>);
+<span class="returnvalue">void</span>                <a class="link" href="GnomeXkbInfo.html#gnome-xkb-info-free-var-defs" title="gnome_xkb_info_free_var_defs ()">gnome_xkb_info_free_var_defs</a>        (<em class="parameter"><code><span class="type">XkbRF_VarDefsRec</span> *var_defs</code></em>);
+</pre>
+</div>
+<div class="refsect1">
+<a name="GnomeXkbInfo.object-hierarchy"></a><h2>Object Hierarchy</h2>
+<pre class="synopsis">
+  GObject
+   +----GnomeXkbInfo
+</pre>
+</div>
+<div class="refsect1">
+<a name="GnomeXkbInfo.description"></a><h2>Description</h2>
+<p>
+</p>
+</div>
+<div class="refsect1">
+<a name="GnomeXkbInfo.details"></a><h2>Details</h2>
+<div class="refsect2">
+<a name="GnomeXkbInfo-struct"></a><h3>struct GnomeXkbInfo</h3>
+<pre class="programlisting">struct GnomeXkbInfo;</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="GnomeXkbInfoClass"></a><h3>struct GnomeXkbInfoClass</h3>
+<pre class="programlisting">struct GnomeXkbInfoClass {
+  GObjectClass parent_class;
+};
+</pre>
+<p>
+</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-xkb-info-new"></a><h3>gnome_xkb_info_new ()</h3>
+<pre class="programlisting"><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="returnvalue">GnomeXkbInfo</span></a> *      gnome_xkb_info_new                  (<em class="parameter"><code><span class="type">void</span></code></em>);</pre>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>a new <a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> instance. <span class="annotation">[<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr></tbody>
+</table></div>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-xkb-info-get-all-layouts"></a><h3>gnome_xkb_info_get_all_layouts ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             gnome_xkb_info_get_all_layouts      (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>);</pre>
+<p>
+Returns a list of all layout identifiers we know about.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>self</code></em> :</span></p></td>
+<td>a <a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the list
+of layout names. The caller takes ownership of the <span class="type">GList</span> but not
+of the strings themselves, those are internally allocated and must
+not be modified. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> utf8]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.6</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-xkb-info-get-layouts-for-country"></a><h3>gnome_xkb_info_get_layouts_for_country ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             gnome_xkb_info_get_layouts_for_country
+                                                        (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *country_code</code></em>);</pre>
+<p>
+Returns a list of all layout identifiers we know about for
+<em class="parameter"><code>country_code</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>self</code></em> :</span></p></td>
+<td>a <a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>country_code</code></em> :</span></p></td>
+<td>an ISO 3166 code string</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the list
+of layout ids. The caller takes ownership of the <span class="type">GList</span> but not of
+the strings themselves, those are internally allocated and must not
+be modified. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> utf8]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.8</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-xkb-info-get-layouts-for-language"></a><h3>gnome_xkb_info_get_layouts_for_language ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             gnome_xkb_info_get_layouts_for_language
+                                                        (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *language_code</code></em>);</pre>
+<p>
+Returns a list of all layout identifiers we know about for
+<em class="parameter"><code>language_code</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>self</code></em> :</span></p></td>
+<td>a <a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>language_code</code></em> :</span></p></td>
+<td>an ISO 639 code string</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the list
+of layout ids. The caller takes ownership of the <span class="type">GList</span> but not of
+the strings themselves, those are internally allocated and must not
+be modified. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> utf8]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.8</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-xkb-info-get-layout-info"></a><h3>gnome_xkb_info_get_layout_info ()</h3>
+<pre class="programlisting"><span class="returnvalue">gboolean</span>            gnome_xkb_info_get_layout_info      (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *id</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> **display_name</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> **short_name</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> **xkb_layout</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> **xkb_variant</code></em>);</pre>
+<p>
+Retrieves information about a layout. Both <em class="parameter"><code>display_name</code></em> and
+<em class="parameter"><code>short_name</code></em> are suitable to show in UIs and might be localized if
+translations are available.
+</p>
+<p>
+Some layouts don't provide a short name (2 or 3 letters) or don't
+specify a XKB variant, in those cases <em class="parameter"><code>short_name</code></em> or <em class="parameter"><code>xkb_variant</code></em>
+are empty strings, i.e. "".
+</p>
+<p>
+If the given layout doesn't exist the return value is <code class="literal">FALSE</code> and
+all the (out) parameters are set to <a href="/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>self</code></em> :</span></p></td>
+<td>a <a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>id</code></em> :</span></p></td>
+<td>layout's identifier about which to retrieve the info</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>display_name</code></em> :</span></p></td>
+<td>location to store
+the layout's display name, or <a href="/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>][<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>short_name</code></em> :</span></p></td>
+<td>location to store
+the layout's short name, or <a href="/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>][<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>xkb_layout</code></em> :</span></p></td>
+<td>location to store
+the layout's XKB name, or <a href="/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>][<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>xkb_variant</code></em> :</span></p></td>
+<td>location to store
+the layout's XKB variant, or <a href="/usr/share/gtk-doc/html/liboil/liboil-liboiljunk.html#NULL:CAPS"><code class="literal">NULL</code></a>. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/allow-none"><span class="acronym">allow-none</span></a>][<a href="http://foldoc.org/transfer%20none"><span class="acronym">transfer none</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>
+<code class="literal">TRUE</code> if the layout exists or <code class="literal">FALSE</code> otherwise.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.6</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-xkb-info-get-all-option-groups"></a><h3>gnome_xkb_info_get_all_option_groups ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             gnome_xkb_info_get_all_option_groups
+                                                        (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>);</pre>
+<p>
+Returns a list of all option group identifiers we know about.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>self</code></em> :</span></p></td>
+<td>a <a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the list
+of option group ids. The caller takes ownership of the <span class="type">GList</span> but
+not of the strings themselves, those are internally allocated and
+must not be modified. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> utf8]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.6</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-xkb-info-description-for-group"></a><h3>gnome_xkb_info_description_for_group ()</h3>
+<pre class="programlisting">const <span class="returnvalue">gchar</span> *       gnome_xkb_info_description_for_group
+                                                        (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *group_id</code></em>);</pre>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>self</code></em> :</span></p></td>
+<td>a <a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>group_id</code></em> :</span></p></td>
+<td>identifier for group</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the translated description for the group <em class="parameter"><code>group_id</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.8</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-xkb-info-get-options-for-group"></a><h3>gnome_xkb_info_get_options_for_group ()</h3>
+<pre class="programlisting"><span class="returnvalue">GList</span> *             gnome_xkb_info_get_options_for_group
+                                                        (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *group_id</code></em>);</pre>
+<p>
+Returns a list of all option identifiers we know about for group
+<em class="parameter"><code>group_id</code></em>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>self</code></em> :</span></p></td>
+<td>a <a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>group_id</code></em> :</span></p></td>
+<td>group's identifier about which to retrieve the options</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the list
+of option ids. The caller takes ownership of the <span class="type">GList</span> but not of
+the strings themselves, those are internally allocated and must not
+be modified. <span class="annotation">[<a href="http://foldoc.org/transfer%20container"><span class="acronym">transfer container</span></a>][<a href="http://foldoc.org/element-type"><span class="acronym">element-type</span></a> utf8]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.6</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-xkb-info-description-for-option"></a><h3>gnome_xkb_info_description_for_option ()</h3>
+<pre class="programlisting">const <span class="returnvalue">gchar</span> *       gnome_xkb_info_description_for_option
+                                                        (<em class="parameter"><code><a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a> *self</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *group_id</code></em>,
+                                                         <em class="parameter"><code>const <span class="type">gchar</span> *id</code></em>);</pre>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>self</code></em> :</span></p></td>
+<td>a <a class="link" href="GnomeXkbInfo.html" title="GnomeXkbInfo"><span class="type">GnomeXkbInfo</span></a>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>group_id</code></em> :</span></p></td>
+<td>identifier for group containing the option</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>id</code></em> :</span></p></td>
+<td>option identifier</td>
+</tr>
+<tr>
+<td><p><span class="term"><span class="emphasis"><em>Returns</em></span> :</span></p></td>
+<td>the translated description for the option <em class="parameter"><code>id</code></em>.</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.6</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-xkb-info-get-var-defs"></a><h3>gnome_xkb_info_get_var_defs ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnome_xkb_info_get_var_defs         (<em class="parameter"><code><span class="type">gchar</span> **rules</code></em>,
+                                                         <em class="parameter"><code><span class="type">XkbRF_VarDefsRec</span> **var_defs</code></em>);</pre>
+<p>
+Gets both the XKB rules file path and the current XKB parameters in
+use by the X server.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>rules</code></em> :</span></p></td>
+<td>location to store the rules file
+path. Use <code class="function">g_free()</code> when it's no longer needed. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr>
+<tr>
+<td><p><span class="term"><em class="parameter"><code>var_defs</code></em> :</span></p></td>
+<td>location to store a
+<span class="type">XkbRF_VarDefsRec</span> pointer. Use <a class="link" href="GnomeXkbInfo.html#gnome-xkb-info-free-var-defs" title="gnome_xkb_info_free_var_defs ()"><code class="function">gnome_xkb_info_free_var_defs()</code></a> to
+free it. <span class="annotation">[<a href="http://foldoc.org/out"><span class="acronym">out</span></a>][<a href="http://foldoc.org/transfer%20full"><span class="acronym">transfer full</span></a>]</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+<p class="since">Since 3.6</p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="gnome-xkb-info-free-var-defs"></a><h3>gnome_xkb_info_free_var_defs ()</h3>
+<pre class="programlisting"><span class="returnvalue">void</span>                gnome_xkb_info_free_var_defs        (<em class="parameter"><code><span class="type">XkbRF_VarDefsRec</span> *var_defs</code></em>);</pre>
+<p>
+Frees an <span class="type">XkbRF_VarDefsRec</span> instance allocated by
+<a class="link" href="GnomeXkbInfo.html#gnome-xkb-info-get-var-defs" title="gnome_xkb_info_get_var_defs ()"><code class="function">gnome_xkb_info_get_var_defs()</code></a>.
+</p>
+<div class="variablelist"><table border="0" class="variablelist">
+<colgroup>
+<col align="left" valign="top">
+<col>
+</colgroup>
+<tbody><tr>
+<td><p><span class="term"><em class="parameter"><code>var_defs</code></em> :</span></p></td>
+<td>
+<span class="type">XkbRF_VarDefsRec</span> instance to free</td>
+</tr></tbody>
+</table></div>
+<p class="since">Since 3.6</p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>
+          Generated by GTK-Doc V1.19</div>
+</body>
+</html>
